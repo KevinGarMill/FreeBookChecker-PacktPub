@@ -9,20 +9,29 @@ Su objetivo es Informar al usuario del nuevo libro gratuito
 @autor: kevingarmill@gmail.com
 '''
 import urllib2
-
+from bs4 import BeautifulSoup
 
 class Checker(object):
     def get_web(self, page):
         f = urllib2.urlopen(page)
         html = f.read()
         f.close
-        print html
+        return html
+
+    def search_title(self, html):
+        soup = BeautifulSoup(html, 'html.parser')
+        element = soup.find_all("div", "dotd-title")
+        title = element[0].find("h2")
+        if title:
+            title = title.text.strip()
+        return title
 
 
     def main(self):
         web = self.get_web('https://www.packtpub.com/packt/offers/free-learning')
-        # get title book
+        title = self.search_title(web)
         # print title book
+        print title
 
 
 if __name__ == "__main__":
