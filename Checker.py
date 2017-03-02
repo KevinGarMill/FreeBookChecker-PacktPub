@@ -23,7 +23,7 @@ class Checker(object):
         element = soup.find_all("div", "dotd-title")
         title = element[0].find("h2")
         if title:
-            title = title.text.strip()
+            title = title.text
         return title
 
 
@@ -31,7 +31,7 @@ class Checker(object):
         web = self.get_web('https://www.packtpub.com/packt/offers/free-learning')
         title = self.search_title(web)
         # print title book
-        print title
+        print "El Titulo del libro de hoy es: " + title.strip()
 
 
 if __name__ == "__main__":
