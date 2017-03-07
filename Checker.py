@@ -30,7 +30,7 @@ class Checker(object):
     def main(self):
         web = self.get_web('https://www.packtpub.com/packt/offers/free-learning')
         title = self.search_title(web)
-        print "El Titulo del libro de hoy es: " + title
+        print title
 
 
 if __name__ == "__main__":
