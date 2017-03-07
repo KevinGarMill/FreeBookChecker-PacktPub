@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
-#vim: set fileencoding=utf8 :
+# -*- coding: utf-8 -*-
+# vim: set fileencoding=utf8 :
 
 '''
 Cliente web para https://www.packtpub.com/packt/offers/free-learning
@@ -10,6 +10,7 @@ Su objetivo es Informar al usuario del nuevo libro gratuito
 '''
 import urllib2
 from bs4 import BeautifulSoup
+
 
 class Checker(object):
     def get_web(self, page):
@@ -24,14 +25,12 @@ class Checker(object):
         title = element[0].find("h2")
         if title:
             title = title.text
-        return title
-
+        return title.strip()
 
     def main(self):
         web = self.get_web('https://www.packtpub.com/packt/offers/free-learning')
         title = self.search_title(web)
-        # print title book
-        print "El Titulo del libro de hoy es: " + title.strip()
+        print "El Titulo del libro de hoy es: " + title
 
 
 if __name__ == "__main__":
